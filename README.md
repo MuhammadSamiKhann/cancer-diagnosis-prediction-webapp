@@ -1,183 +1,73 @@
-# 🧠 Cancer Diagnosis Prediction System
+# 🧠 Breast Cancer Diagnosis Prediction
 
-## 📌 Introduction
-This project focuses on predicting whether a tumor is **benign (non-cancerous)** or **malignant (cancerous)** using machine learning techniques.  
-The goal was to build a **complete, end-to-end system** starting from a real-world dataset, applying proper preprocessing, training multiple models, comparing their performance, and deploying the solution through a **Flask-based web interface**.
+Predict whether a breast tumor is **Benign** or **Malignant** using machine learning.
 
-### Project Objectives
-- Use real cancer diagnosis data
-- Clean and preprocess the dataset
-- Train at least two machine learning models
-- Compare model performance
-- Deploy the models using a Flask web application
-- Provide visual analysis and graphs for better understanding
+## 🎯 Project Overview
 
----
+End-to-end ML project using the **Wisconsin Breast Cancer Diagnostic** dataset:
 
-## 📊 Dataset Description
-The project uses the **Wisconsin Breast Cancer Diagnostic Dataset**, which contains **699 tumor samples** with medical measurements.
+- Data cleaning & preprocessing
+- Feature engineering
+- Training & comparing two models
+- Model deployment with Flask web app
+- Visual analysis & interpretation
 
-### Features Included
-- Clump Thickness  
-- Uniformity of Cell Size  
-- Uniformity of Cell Shape  
-- Marginal Adhesion  
-- Single Epithelial Cell Size  
-- Bare Nuclei  
-- Bland Chromatin  
-- Normal Nucleoli  
-- Mitoses  
+## 📊 Dataset
 
-### Target Variable
-- **Class**
-  - `2 → Benign`
-  - `4 → Malignant`
+- **Source**: Wisconsin Breast Cancer (Diagnostic)
+- **Samples**: 699
+- **Features**: 9 cytological characteristics
+- **Target**: Benign (0) / Malignant (1)
 
-The target variable was converted to binary values:
-- `0 = Benign`
-- `1 = Malignant`
+## 🧹 Preprocessing & Feature Engineering
 
----
+- Handled missing values in Bare Nuclei
+- Removed outliers (Z-score > 3)
+- Standard scaling
+- **New features**:
+  - CellUniformityRatio = Uniformity Size / Uniformity Shape
+  - NucleiDensity = Normal Nucleoli / Clump Thickness
 
-## 🧹 Data Preprocessing
+## 🤖 Models
 
-### Handling Missing Values
-- The `BareNuc` column contained missing and non-numeric values
-- These were converted using pandas
-- Rows with missing values were removed to avoid prediction errors
+| Model              | Type                  | Strengths                        |
+|--------------------|-----------------------|----------------------------------|
+| MLPClassifier      | Neural Network        | Captures complex patterns        |
+| RandomForest       | Ensemble (Trees)      | Feature importance, robustness   |
 
-### Data Formatting
-- All feature columns were converted to numeric types
-- The class label was mapped from `2/4` to `0/1`
+- 80/20 stratified train-test split
+- Models & scaler saved with joblib
 
-### Outlier Detection
-- Outliers were detected and removed using the **Z-score method**
-- Rows with Z-scores greater than **3** were excluded
+## 📈 Results & Visualizations
 
-### Normalization
-- Feature scaling was applied using a standard scaler to improve model performance
-
----
-
-## 🧠 Feature Engineering
-Two new features were created to enhance model learning:
-
-- **CellUniformityRatio**  
-  `Uniformity of Cell Size / Uniformity of Cell Shape`
-
-- **NucleiDensity**  
-  `Normal Nucleoli / Clump Thickness`
-
-These engineered features helped capture relationships between important cell properties.
-
----
-
-## 🤖 Model Development
-
-### Models Used
-1. **Neural Network (MLPClassifier)**  
-   - Multi-layer perceptron with hidden layers  
-   - Captures complex non-linear patterns  
-
-2. **Random Forest Classifier**  
-   - Ensemble model using multiple decision trees  
-   - Provides feature importance analysis  
-
-### Training Strategy
-- **80–20 train-test split**
-- Stratified sampling to preserve class balance
-
----
-
-## 📈 Model Evaluation
-
-### Evaluation Metrics
-- Accuracy
-- Confusion Matrix
-- Training Loss Curve (Neural Network)
-- Feature Importance (Random Forest)
-
-### Model Saving
-- Both trained models and the scaler were saved using **joblib**
-- This allows easy reuse inside the Flask application
-
----
-
-## 📊 Visualizations & Analysis
-
-### Graphs Included
-- Confusion matrix for both models
-- Neural network training loss curve
-- Random forest feature importance plot
-- Histograms for all features
+- Confusion matrices
+- Training loss curve (Neural Network)
+- Feature importance (Random Forest)
 - Correlation heatmap
-- Boxplots comparing benign vs malignant cases
+- Distribution comparison (Benign vs Malignant)
 
-### Key Observations
-- Malignant tumors usually show higher values for:
-  - Bare Nuclei
-  - Uniformity of Cell Size
-  - Uniformity of Cell Shape
-- Random Forest clearly highlighted the most influential features
-- Neural Network achieved slightly higher accuracy but required careful preprocessing
+**Key Insight**: Bare Nuclei, Uniformity of Cell Size & Shape are the most discriminative features.
 
----
-Data Collection
-↓
-Preprocessing
-↓
-Feature Engineering
-↓
-Model Training
-↓
-Evaluation
-↓
-Visualization
-↓
-Web Deployment
+## 🌐 Web Application (Flask)
 
+- Clean & simple input form
+- Choose model (Neural Network or Random Forest)
+- Instant prediction
+- Results + important visualization pages
 
-All steps were implemented using **Python**, **scikit-learn**, **pandas**, and **Flask**.
+## 🛠️ Tech Stack
+
+- Python
+- pandas, NumPy
+- scikit-learn
+- Matplotlib, Seaborn
+- Flask
+- joblib
+
+## Workflow
+
+Data → Cleaning → Feature Engineering → Model Training → Evaluation → Visualization → Flask Deployment
 
 ---
 
-## 🌐 Web Application
-
-### Features
-- Simple and user-friendly interface
-- Input form for medical measurements
-- Model selection:
-  - Neural Network
-  - Random Forest
-- Displays prediction result instantly
-
-### Visualization Pages
-- Confusion matrix
-- Neural network loss curve
-- Feature importance chart
-- Correlation heatmap
-
----
-
-## 🧾 Conclusion
-This project successfully achieved its objectives:
-- Cleaned and prepared a real-world cancer dataset
-- Trained and compared two classification models
-- Built a functional Flask web application
-- Used visual analysis to understand model performance
-
-This project demonstrates the **complete machine learning pipeline**, from data preprocessing to deployment.
-
----
-
-## 🛠️ Technologies Used
-- Python  
-- Pandas & NumPy  
-- Scikit-learn  
-- Matplotlib & Seaborn  
-- Flask  
-- Joblib  
-
----
-
-## 🔄 Workflow
+A complete demonstration of real-world ML pipeline from raw data to production web app.
