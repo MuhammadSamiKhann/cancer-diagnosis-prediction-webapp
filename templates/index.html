@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered cancer diagnosis prediction using machine learning">
+    <title>Cancer Diagnosis Predictor - AI Medical Analysis</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header-section">
+            <div class="header-badge">
+                <span class="badge badge-info">AI-Powered Analysis</span>
+            </div>
+            <h1>🔬 Cancer Diagnosis Predictor</h1>
+            <p class="subtitle">Advanced Machine Learning for Medical Diagnostics</p>
+        </header>
+
+        <!-- Results/Error Display -->
+        {% if diagnosis %}
+            <div class="result">
+                <div class="result-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h2 class="result-title">Prediction Complete</h2>
+                <div class="diagnosis-result">
+                    <span class="diagnosis-label">Diagnosis:</span>
+                    <span class="diagnosis">{{ diagnosis }}</span>
+                </div>
+                <p class="result-note">⚠️ This is a predictive model. Please consult with a medical professional for accurate diagnosis.</p>
+            </div>
+        {% elif error %}
+            <div class="error">
+                <div class="error-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <h2 class="error-title">Error Occurred</h2>
+                <p class="error-message">{{ error }}</p>
+            </div>
+        {% endif %}
+
+        <!-- Prediction Form -->
+        <form method="post" class="prediction-form">
+            <div class="form-section">
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    Select Model
+                </h2>
+                
+                <div class="form-group">
+                    <label for="model_type">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                        Machine Learning Model
+                    </label>
+                    <select id="model_type" name="model_type" required>
+                        {% for model in models %}
+                            <option value="{{ model }}" {% if model == selected_model %}selected{% endif %}>
+                                {{ model }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="8" y1="6" x2="21" y2="6"></line>
+                        <line x1="8" y1="12" x2="21" y2="12"></line>
+                        <line x1="8" y1="18" x2="21" y2="18"></line>
+                        <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                        <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                        <line x1="3" y1="18" x2="3.01" y2="18"></line>
+                    </svg>
+                    Cell Feature Parameters
+                </h2>
+                <p class="form-description">Enter values from 1-10 for each cell characteristic</p>
+
+                <div class="form-grid">
+                    {% set feature_labels = {
+                        'Clump': 'Clump Thickness',
+                        'UnifSize': 'Cell Size Uniformity',
+                        'UnifShape': 'Cell Shape Uniformity',
+                        'MargAdh': 'Marginal Adhesion',
+                        'SingEpiSize': 'Single Epithelial Cell Size',
+                        'BareNuc': 'Bare Nuclei',
+                        'BlandChrom': 'Bland Chromatin',
+                        'NormNucl': 'Normal Nucleoli',
+                        'Mit': 'Mitoses'
+                    } %}
+
+                    {% for feature in ['Clump', 'UnifSize', 'UnifShape', 'MargAdh',
+                                       'SingEpiSize', 'BareNuc', 'BlandChrom', 'NormNucl', 'Mit'] %}
+                    <div class="form-group">
+                        <label for="{{ feature }}">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            {{ feature_labels[feature] }}
+                        </label>
+                        <input 
+                            type="number" 
+                            id="{{ feature }}"
+                            name="{{ feature }}" 
+                            min="1" 
+                            max="10" 
+                            placeholder="1-10"
+                            required
+                            aria-label="{{ feature_labels[feature] }}"
+                        >
+                        <span class="input-hint">Range: 1-10</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Generate Prediction
+            </button>
+        </form>
+
+        <!-- Navigation -->
+        <nav class="main-nav">
+            <a href="{{ url_for('about') }}" class="nav-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                About
+            </a>
+            <a href="{{ url_for('visualizations') }}" class="nav-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Visualizations
+            </a>
+        </nav>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Cancer Diagnosis Predictor | Powered by Machine Learning | Made by Muhammad Sami Khan</p>
+            <p class="footer-disclaimer">For research and educational purposes only</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+
+Neural Network Evaluation:
+--------------------------
+Accuracy:  0.9508
+Precision: 0.9167
+Recall:    0.9167
+F1 Score:  0.9167
+
+Random Forest Evaluation:
+--------------------------
+Accuracy:  0.9426
+Precision: 0.9143
+Recall:    0.8889
+F1 Score:  0.9014

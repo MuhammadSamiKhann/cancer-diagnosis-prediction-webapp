@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about the Cancer Diagnosis Predictor application">
+    <title>About - Cancer Diagnosis Predictor</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header-section">
+            <div class="header-badge">
+                <span class="badge badge-info">Information</span>
+            </div>
+            <h1>ℹ️ About This Application</h1>
+            <p class="subtitle">Understanding AI-Powered Cancer Diagnosis</p>
+        </header>
+
+        <!-- Main Content -->
+        <article class="about-content">
+            <!-- Introduction -->
+            <section class="content-section">
+                <div class="section-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                </div>
+                <h2>Overview</h2>
+                <p class="content-text">
+                    The Cancer Diagnosis Predictor is an advanced machine learning application designed to assist in the classification of breast cancer tumors as either <strong>benign</strong> (non-cancerous) or <strong>malignant</strong> (cancerous). This tool leverages state-of-the-art AI algorithms to analyze cellular characteristics and provide rapid diagnostic predictions.
+                </p>
+            </section>
+
+            <!-- How It Works -->
+            <section class="content-section">
+                <div class="section-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                </div>
+                <h2>How It Works</h2>
+                <p class="content-text">
+                    Our application employs two powerful machine learning models:
+                </p>
+                
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <div class="feature-icon feature-icon-primary">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6"></path>
+                                <path d="M17 12h6M1 12h6"></path>
+                            </svg>
+                        </div>
+                        <h3>Neural Network</h3>
+                        <p>A deep learning model that mimics the human brain's neural structure, trained on thousands of cancer cell samples to recognize complex patterns in cellular characteristics.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon feature-icon-success">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                            </svg>
+                        </div>
+                        <h3>Random Forest</h3>
+                        <p>An ensemble learning method that creates multiple decision trees and combines their predictions for improved accuracy and reliability in cancer detection.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dataset Information -->
+            <section class="content-section">
+                <div class="section-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                        <polyline points="13 2 13 9 20 9"></polyline>
+                    </svg>
+                </div>
+                <h2>Dataset</h2>
+                <p class="content-text">
+                    The models are trained on the renowned <strong>Wisconsin Breast Cancer Dataset</strong>, a comprehensive collection of fine needle aspirate (FNA) samples from breast masses. This dataset includes 9 key cellular features measured on a scale of 1-10:
+                </p>
+
+                <ul class="feature-list">
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Clump Thickness:</strong> Benign cells tend to be grouped in single layers, while malignant cells are often multilayered
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Cell Size & Shape Uniformity:</strong> Cancer cells vary more in size and shape
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Marginal Adhesion:</strong> Normal cells stick together, cancer cells tend to lose this ability
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Single Epithelial Cell Size:</strong> Related to cell uniformity
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Bare Nuclei:</strong> Indicator of cell health and structure
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Bland Chromatin:</strong> Texture of cell nucleus
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Normal Nucleoli:</strong> Small structures within nucleus
+                    </li>
+                    <li>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <strong>Mitoses:</strong> Cell division rate indicator
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Important Disclaimer -->
+            <section class="content-section">
+                <div class="section-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                        <line x1="12" y1="9" x2="12" y2="13"></line>
+                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                    </svg>
+                </div>
+                <h2>Important Disclaimer</h2>
+                <div class="warning-box">
+                    <p class="content-text">
+                        <strong>⚠️ This application is for educational and research purposes only.</strong>
+                    </p>
+                    <p class="content-text">
+                        While our models achieve high accuracy rates, they should <strong>NEVER</strong> be used as a substitute for professional medical diagnosis. Cancer diagnosis requires comprehensive evaluation by qualified healthcare professionals, including physical examinations, imaging studies, and laboratory tests.
+                    </p>
+                    <p class="content-text">If you have health concerns, please consult with a licensed medical practitioner immediately.
+                </p>
+            </div>
+        </section>        <!-- Technology Stack -->
+        <section class="content-section">
+            <div class="section-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                    <line x1="8" y1="21" x2="16" y2="21"></line>
+                    <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+            </div>
+            <h2>Technology Stack</h2>            <div class="tech-grid">
+                <div class="tech-badge">
+                    <span class="tech-icon">🐍</span>
+                    <span class="tech-name">Python</span>
+                </div>
+                <div class="tech-badge">
+                    <span class="tech-icon">🧠</span>
+                    <span class="tech-name">TensorFlow/Keras</span>
+                </div>
+                <div class="tech-badge">
+                    <span class="tech-icon">🌲</span>
+                    <span class="tech-name">Scikit-learn</span>
+                </div>
+                <div class="tech-badge">
+                    <span class="tech-icon">🌐</span>
+                    <span class="tech-name">Flask</span>
+                </div>
+                <div class="tech-badge">
+                    <span class="tech-icon">📊</span>
+                    <span class="tech-name">NumPy/Pandas</span>
+                </div>
+                <div class="tech-badge">
+                    <span class="tech-icon">📈</span>
+                    <span class="tech-name">Matplotlib</span>
+                </div>
+            </div>
+        </section>        <!-- Contact/Feedback -->
+        <section class="content-section">
+            <div class="section-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                </svg>
+            </div>
+            <h2>Feedback & Contact</h2>
+            <p class="content-text">
+                This project was developed as a demonstration of machine learning capabilities in medical diagnostics. For questions, suggestions, or contributions, please feel free to reach out or visit our project repository.
+            </p>
+        </section>
+    </article>    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="{{ url_for('index') }}" class="nav-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Home
+        </a>
+        <a href="{{ url_for('visualizations') }}" class="nav-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+            </svg>
+            Visualizations
+        </a>
+    </nav>    <!-- Footer -->
+    <footer>
+        <p>© 2026 Cancer Diagnosis Predictor | Educational AI Application Made by Muhammad Sami Khan </p>
+        <p class="footer-disclaimer">Not intended for clinical use</p>
+    </footer>
+</div>
